@@ -262,6 +262,14 @@ public class GameManager : MonoBehaviour
         UIKit.Screen(ui, titlePanel, "Bouncing Orb", new Color(1f, 0.72f, 0.35f), out var intro, "Play", ShowLevelSelect);
         intro.text = "Roll and jump to the flag. Every bounce on the ground scores a point - but touching a red block resets your bounces to zero!\n\n" +
                      "<color=#ffd38a><b>A / D</b> or arrows  roll      <b>Space</b>  jump</color>\n<size=85%>On a phone, use the buttons on screen.</size>";
+        var credit = UIKit.Text("Credit", titlePanel.transform, "Made by <b>Maheshwaran</b>", 40, TextAlignmentOptions.Center);
+        credit.color = UIKit.Cream;
+        credit.outlineWidth = 0.22f;
+        credit.outlineColor = new Color32(10, 12, 18, 255);
+        UIKit.Place(credit.rectTransform, new Vector2(0.5f, 0), new Vector2(0, -70), new Vector2(900, 60));
+        var version = UIKit.Text("Version", titlePanel.transform, "v" + Application.version, 28, TextAlignmentOptions.Right);
+        version.color = new Color(1f, 1f, 1f, 0.55f);
+        UIKit.Place(version.rectTransform, new Vector2(1, 0), new Vector2(-24, 16), new Vector2(200, 40));
 
         // Level select
         levelPanel = UIKit.Panel("Levels", ui, new Vector2(1240, 760));
@@ -282,6 +290,9 @@ public class GameManager : MonoBehaviour
             levelButtons.Add(b);
         }
         Button(levelPanel.transform, "Back", new Vector2(0.5f, 0), new Vector2(0, 40), new Vector2(300, 90), Grey, () => ShowOnly(titlePanel));
+        var byline = UIKit.Text("Credit", levelPanel.transform, "by Maheshwaran", 30, TextAlignmentOptions.Right);
+        byline.color = new Color(1f, 0.93f, 0.82f, 0.7f);
+        UIKit.Place(byline.rectTransform, new Vector2(1, 0), new Vector2(-30, 24), new Vector2(400, 44));
 
         // Pause
         pausePanel = UIKit.Panel("Pause", ui, new Vector2(760, 560));
